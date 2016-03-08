@@ -12,6 +12,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <head>
 
+<link rel="stylesheet" type="text/css" href="style.css">
+
+
+
 
 <body>
 <div class ="container">
@@ -32,6 +36,7 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	        <li><a href="#about">About</a></li>
+	         <li><a href="#why">Why</a></li>
 	        <li><a href="#methodology">Methodology</a></li>
 	      </ul>
 	      
@@ -39,6 +44,7 @@
 			<li><a href="#conclusion">Conclusion</a></li>	 
 			<li><a href="#references">References</a></li>	
 	        <li><a href="#links">Links</a></li>
+	        <li><a href="#about">About</a></li>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
@@ -55,9 +61,20 @@
 			<h3 class="panel-title">About</h3>
 		</div>
 		<div class="panel-body">
-		Ugh tattooed cardigan hammock. Nesciunt shoreditch poutine, migas sriracha sint tacos seitan kogi ad art party sustainable freegan. Occaecat heirloom affogato eu street art. Schlitz cred gentrify, seitan hammock polaroid gluten-free. Aliqua four loko meditation, 3 wolf moon tacos kale chips dolor ethical neutra non dreamcatcher meggings gastropub umami. Truffaut hammock mollit magna, YOLO aesthetic scenester photo booth williamsburg swag excepteur. Salvia kale chips pork belly try-hard, commodo everyday carry cronut keytar.
+			<p>
+				Our Auto-DJ Software is an improvement on the fade-out/fade-in algorithms that programs like Spotify and iTunes use to mix together songs in a playlist. Our algorithm will allow the user to import a batch of MP3 or WAV audio files, and will determine the best order to play the songs in according to tonal center and BPM of the song. The algorithm will “beatmatch” the songs and overlay them so that one song seamlessly transitions into the next. Additionally, algorithm will slowly change the tempo from one song to the next so that changes in speed cannot be noticed.
+			</p>
+		</div>
+	</div>
 
-		Id exercitation marfa, vero deep v qui fixie. Banjo roof party nulla, tousled occaecat brooklyn dreamcatcher sint poutine elit helvetica duis. Semiotics pork belly duis crucifix, street art skateboard etsy truffaut freegan. Lumbersexual brooklyn offal, sriracha readymade everyday carry vinyl crucifix. Actually schlitz kinfolk id, tempor placeat meggings authentic sartorial jean shorts single-origin coffee. Hammock man bun ennui marfa, letterpress you probably haven't heard of them hashtag yr odio. Salvia nihil pickled pinterest, twee bitters yr.
+	<div class="panel panel-default" id="why">
+	 	<div class="panel-heading">
+			<h3 class="panel-title">Why</h3>
+		</div>
+		<div class="panel-body">
+		<p>	
+			Setting a playlist to flow from song to song seamlessly prevents the listener from being distracted by interruptions in the flow of the music. Having an automated software switch songs does not tie down any specific person to manage the music. The software will also be able to tell which songs go well together, and rearrange the playlist to have the most natural flow. It will be able to change speeds at a rate that the people listening will have a hard time even noticing the changes. A unique feature of our planned algorithm is that it attempts to avoid clashes in frequencies between the songs. It will attempt to remove certain frequencies from the incoming song where the current song has the most energy. For example, The software will remove any frequencies under 250 Hz of the incoming song to allow the bass and kick drum from the current song to continue to stand out. Once the two are playing in time, it will slowly remove the frequencies from the old track and bring the new track to full volume. 
+		</p>
 		</div>
 	</div>
 
@@ -66,19 +83,40 @@
 			<h3 class="panel-title">Methodology</h3>
 		</div>
 		<div class="panel-body">
-		Sed cliche direct trade, truffaut tote bag vinyl nisi mlkshk fanny pack vice banjo YOLO. Semiotics cray intelligentsia celiac, lo-fi assumenda pabst skateboard. Banjo man bun drinking vinegar kinfolk selvage et lomo, id humblebrag sustainable DIY cillum. Cliche keffiyeh cronut elit hella consectetur. Everyday carry 8-bit migas cold-pressed typewriter. Blog affogato cray kickstarter biodiesel, trust fund ethical craft beer whatever roof party forage. Ennui knausgaard retro, deserunt craft beer letterpress salvia stumptown kogi marfa tousled.
-
-		Aliquip placeat ennui anim cray. Sunt eiusmod occupy pug. Est incididunt retro, migas semiotics deep v gluten-free messenger bag blog eiusmod skateboard DIY dolor laboris. Culpa sustainable duis, tattooed chillwave actually ugh marfa sunt bicycle rights sapiente mlkshk. Flannel cornhole non shoreditch distillery voluptate. Yr lo-fi culpa eu do chartreuse. Bushwick asymmetrical cillum scenester meditation, cupidatat deserunt tofu eiusmod viral williamsburg proident fashion axe venmo you probably haven't heard of them.
+			<p>
+				We will compare the actual BPM of the song to the BPM detected by our software. We will also record the time it takes to analyze a batch of songs before playback can begin. Because beatmatching is our most important function, we score correct BPM detection with the highest weight. We will also score how often the audio clips or distorts due to clashing frequencies between the two songs.  
+			</p>
+			<p>
+				We will gather a group of test subjects and present a transition between two songs using different music softwares. We can compare the basic “crossfade” on iTunes or Spotify, the auto fade of VirtualDJ, a human DJ transition, and our AutoDJ software. We will ask subjects which example they thought was the smoothest (which seemed to “flow” the best). We can take an average of the results and see how our software holds up to the other methods. 
+			<p>
 		</div>
 	</div>
 
 
-	<div class="panel panel-default" id="conclusion">
+	<div class="panel panel-default" id="Components">
 	 	<div class="panel-heading">
-			<h3 class="panel-title">Conclusion</h3>
+			<h3 class="panel-title">Components</h3>
 		</div>
-		<div class="panel-body">
-		PBR&B man braid bushwick forage minim farm-to-table. Literally labore venmo seitan odio gastropub. Vice leggings placeat retro cardigan YOLO trust fund, irony post-ironic waistcoat cornhole scenester anim dreamcatcher messenger bag. Single-origin coffee authentic assumenda keffiyeh narwhal, kale chips heirloom dreamcatcher id you probably haven't heard of them paleo keytar. Vegan esse poutine letterpress, aliqua ethical XOXO waistcoat street art tofu. Marfa deep v occupy, voluptate banjo laboris fixie aesthetic magna intelligentsia squid. Microdosing scenester deep v neutra.
+			<div class="panel-body">
+			<h4>
+				Fade-in Fade-out 
+			</h4>		
+				<p>
+					The fade-in and fade-out portions of the program will allow us to slowly change the volume of each track at the beginning and end respectively. Each function will accept an audio file, a fade beginning sample number, and a fade end sample number. The function will then create the fade-in or fade-out using a triangular amplitude filter.  
+
+				</p>
+			<h4>
+				Filtering 
+			</h4>
+				<p>
+				The song filtering portion of the program will allow us to remove certain parts of the frequency range from the beginning or end of each song to facilitate a better song blend. The function will accept an audio file, a type of filter (low-pass or high-pass), a filter beginning, and a filter end. The function will then remove the selected portions of the frequency spectrum from the specified time interval, and will reconstruct the audio with the changes implemented.			
+				</p>
+			<h4>
+				Libraries 
+			</h4>
+				<p>
+					The interface is secondary and will only be built if we are able to perfect the python code. If we do implement a web interface, it will be written using Angular.JS and Bootstrap.
+				</p>
 		</div>
 	</div>
 
@@ -88,7 +126,45 @@
 			<h3 class="panel-title">References</h3>
 		</div>
 		<div class="panel-body">
-		Vinyl placeat mlkshk minim accusamus waistcoat. Try-hard tote bag meditation mlkshk. Man bun literally dreamcatcher, lo-fi cray polaroid in bitters franzen. Non dreamcatcher wayfarers, cred photo booth keffiyeh id irure godard laborum cillum gentrify kinfolk velit. Aute truffaut odio kitsch, forage sapiente squid cold-pressed jean shorts mustache twee. Plaid pug aesthetic reprehenderit, intelligentsia occupy odio vero try-hard delectus. Pug taxidermy blog, health goth pour-over semiotics jean shorts selfies literally qui letterpress pitchfork meh waistcoat.
+			<h4>
+				Libraries 
+			</h4>
+			<p>
+				We have found a few tools that will help us greatly assist us in this project. We will be using Librosa, SciPy, and NumPy to help with audio calculations. We will also be using RubberBand to manipulate our audio files in the time domain. We will need to use cython to make it compatible. RubberBand has been reviewed and people say that it is very powerful and works well, but it also puts a lot of stress on the CPU. If it cannot handle what we need to do, we will use SoundTouch. SOund touch works in the time domain. It runs into problems with overlapping windows, either duplicating or missing some audio. Because of this, RubberBand would be ideal, but if it cannot work, we will use SoundTouch. We will also be looking at SuperPowered for time-stretching and pitch shifting.
+			<p>
+
+			<h4>
+				Papers Referenced 
+			</h4>
+			<ul>
+			<li>
+				<a href="http://www.cs.northwestern.edu/~pardo/courses/eecs352/papers/mp3%20tutorial%20-%20pan.pdf">
+				HOW THE MP3 works: in case we run into isues with .mp3 format 
+				</a>
+			</li>
+			<li>
+				<a href="http://www.eecs.qmul.ac.uk/~simond/pub/2006/mirex-beat.pdf">
+				BeatRoot: Give us an understanding of a current beat tracking algorithm so we can troubleshoot if we have issues
+				
+				</a>
+			</li>
+			<li>
+				<a href="http://www.cs.northwestern.edu/~pardo/courses/eecs352/papers/tempo%20tracking%20audio%20-%20pikrakis.pdf">
+				Music Meter and Tempo Tracking from Raw Polyphonic Audio: Another article going through the basics of beat tracking raw audio, which will be useful in implementing the beat-matching algorithm			
+				</a>
+			</li>
+			<li>
+				<a href="https://docs.google.com/viewer?url=patentimages.storage.googleapis.com/pdfs/US5416847.pdf">
+				Multi-Band, Digital Audio Noise Filter: Good basis for how to use EQ bands and apply filters between transitions.		
+				</a>
+			</li>
+			<li>
+				<a href="https://docs.google.com/viewer?url=patentimages.storage.googleapis.com/pdfs/US6236731.pdf">
+				Filterbank Structure and Method for Filtering and Separating an Information Signal into Different Bands: More in depth about frequency bands, although it focuses on analog circuitry implementation.
+				</a>
+			</ul>
+
+
 		</div>
 	</div>
 
@@ -102,10 +178,35 @@
 				<li>
 					Github: <a href="https://github.com/djdapz/autoDJ">https://github.com/djdapz/autoDJ</a>>
 				</li>
+				<li>
+					Web-App: {{Insert Link Here}}
+				</li>
 			</ul>
 		</div>
 	</div>
 
+
+	<div class="panel panel-default" id="about">
+	 	<div class="panel-heading">
+			<h3 class="panel-title">About</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+			  	<div class="col-md-4">
+			  		<p class = "name_blurb">Matthew Shipley</p>
+			  		<p class = "name_blurb">matthewshipley2016@u.northwestern.edu</p>
+			  	</div>
+			  	<div class="col-md-4">
+			  		<p class = "name_blurb">Victor Lalo</p>
+			  		<p class = "name_blurb">victorlalo2017@u.northwestern.edu</p>
+		  		</div>
+			  	<div class="col-md-4">
+			  		<p class = "name_blurb">Devon D'Apuzzo</p>
+			  		<p class = "name_blurb">devondapuzzo2017@u.northwestern.edu</p>
+		  		</div>
+			</div>
+		</div>
+	</div>
 
 </div>
 

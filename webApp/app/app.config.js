@@ -13,7 +13,7 @@
                     controller: 'HomeController'}).
                 when('/webApp',{
                     templateUrl: 'partials/webApp.html',
-                    controller: "webAppController"
+                    controller: "WebAppController"
                 }).
                 otherwise({
                     redirectTo: '/home'

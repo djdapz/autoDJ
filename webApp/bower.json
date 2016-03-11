@@ -1,0 +1,26 @@
+{
+  "name": "AutoDJ",
+  "homepage": "https://github.com/djdapz/autoDJ",
+  "authors": [
+    "Devon D'Apuzzo<devondapuzzo2017@u.northwestern.edu>"
+  ],
+  "description": "Automatic DJ online interface for EECS 352 at Northwestern University",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "DJ",
+    "audio",
+    "music"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular-route": "^1.5.0",
+    "angular": "~1.5.0",
+    "angular-bootstrap": "^1.2.4",
+    "bootstrap": "^3.3.6",
+    "wavesurfer.js": "^1.0.58",
+    "jquery": "~2.2.1",
+    "ng-file-upload": "^12.0.3"
+  }
+}

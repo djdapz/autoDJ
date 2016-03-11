@@ -1,4 +1,4 @@
-var homeController = function($scope){
+var HomeController = function($scope){
 
     $scope.iesCriteria = {
         interfaceName: null,
@@ -12,6 +12,6 @@ var homeController = function($scope){
 /* recommended */
 angular
     .module('app.home')
-    .controller("homeController", homeController);
+    .controller("HomeController", HomeController);
 
-homeController.$inject = ['$scope'];
+HomeController.$inject = ['$scope'];

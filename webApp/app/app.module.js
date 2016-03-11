@@ -6,6 +6,7 @@
     angular.module("app.webApp", []);
 
     angular.module("app", ["ngRoute",
+        "ngFileUpload",
         "ui.bootstrap",
         "app.home",
         "app.webApp"]);

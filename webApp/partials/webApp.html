@@ -10,7 +10,7 @@
 
 
     <div>
-        <div ngf-drop ngf-select ng-model="files" class="drop-box"
+        <div ng-hide="$scope.uploadBegan" ngf-drop ngf-select ng-model="files" class="drop-box"
              ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
              ngf-pattern="'.mp3,.wav'">
             <h3>
@@ -20,12 +20,17 @@
         <div ngf-no-file-drop>
             File Drag/Drop is not supported for this browser
         </div>
-        Files:
+        Songs:
         <ul>
             <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
         </ul>
-        Upload Log:
-        <pre>{{log}}</pre>
+
+
+        <uib-progressbar value="percentageComplete"><span style="color:white; white-space:nowrap;">{{percentageComplete}}%</span></uib-progressbar>
+
+
+
+
     </div>
 </div>
 </div>

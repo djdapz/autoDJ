@@ -1,0 +1,43 @@
+#navbar {
+    background-color: #3f79ff;
+    border-radius: 0px;
+    border: 0px
+}
+
+#navbar-title{
+    color: #ffffff;
+}
+
+.navbar-link{
+    color: #B5D6F2;
+}
+
+#navbar-title:hover{
+    color: #FFCC7F;
+}
+
+/*to accomadate the navbar*/
+body{
+    padding-top: 65px
+}
+
+.name_blurb{
+
+    text-align: center
+}
+
+.mid_nopad{
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 0px
+}
+
+.top_nopad{
+    text-align: center;
+    margin-bottom: 0px
+}
+
+.bot_nopad{
+    text-align: center;
+    margin-top: 0px
+}

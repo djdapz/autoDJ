@@ -1,0 +1,61 @@
+<div>
+    <div ng-hide="uploadBegan">
+        <h1>
+            Upload Files
+        </h1>
+        <p>
+            Drag .mp3 or .wav files to the box below and click GO to create a mixed track
+        </p>
+
+        <div  ngf-drop ngf-select ng-model="files" class="drop-box"
+             ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+             ngf-pattern="'.mp3,.wav'">
+            <h3>
+                Drag Songs Here or Click to Upload
+            </h3>
+        </div>
+        <div ngf-no-file-drop>
+            File Drag/Drop is not supported for this browser
+        </div>
+
+    </div>
+
+
+    <div ng-show="uploadBegan && !processing">
+        <h1>
+            Songs Uploading
+        </h1>
+
+        <uib-progressbar value="percentageComplete"><span style="color:white; white-space:nowrap;">{{percentageComplete}}%</span></uib-progressbar>
+
+
+        <div class="row" ng-repeat="s in songsToDisplay">
+
+
+            <div class = "col-md-1 col-md-offset-3">
+                <span ng-if="s.percentage < 100" class="glyphicon glyphicon-refresh glyphicon-refresh-animate right_icon"></span>
+                <span ng-if="s.percentage == 100" class="glyphicon glyphicon-ok right_icon"></span>
+
+            </div>
+
+            <div class="col-md-4 center_text">
+                {{s.name}}
+            </div>
+
+
+        </div>
+
+        <button class="btn-primary btn pull-right" ng-if="percentageComplete ==100" ng-click="processSongs()">
+            Next
+        </button>
+
+    </div>
+
+    <div ng-if="processing">
+        <h1 class="text-center">
+            Your songs are being Mixed...
+        </h1>
+        <img src="/resources/preloader.gif" class="center_image">
+    </div>
+
+</div>

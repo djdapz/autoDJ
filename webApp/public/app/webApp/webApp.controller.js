@@ -43,10 +43,13 @@ var WebAppController = function($scope, Upload, $timeout){
                 var file = files[i];
                 if (!file.$error) {
                     Upload.upload({
-                        url: 'localhost:8080/uploading',
+                        url: '/upload/song',
                         data: {
                             username: $scope.username,
                             file: file
+                        },
+                        params:{
+                            name: file.name
                         }
                     }).then(function (resp) {
                         $timeout(function() {

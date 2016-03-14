@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "4.13.3",
+    "fileupload": "^1.0.0",
     "multer": "1.1.0"
   },
   "devDependencies": {

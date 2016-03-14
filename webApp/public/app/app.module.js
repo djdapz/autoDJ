@@ -4,11 +4,13 @@
 (function(angular) {
     angular.module("app.home", []);
     angular.module("app.webApp", []);
+    angular.module("app.song", []);
 
     angular.module("app", ["ngRoute",
         "ngFileUpload",
         "ui.bootstrap",
         "app.home",
-        "app.webApp"]);
+        "app.webApp",
+        "app.song"]);
 
 }(angular));

@@ -2,9 +2,69 @@
  * Created by djdapz on 3/10/16.
  */
 
-var WebAppController = function($scope, Upload, $timeout){
+var WebAppController = function($scope, Upload, $timeout, $http){
+
+    //setup variables
+    $scope.initialized = undefined;
+    $scope.usernameEntered = false;
+    $scope.id = {
+        username: undefined,
+        playlistName: undefined,
+        id: undefined
+    }
+    $scope.addingMoreSongs =  false;
+    $scope.weDidIt = undefined;
+
+    //for testing
+    //$scope.initialized = true;
+    //$scope.usernameEntered = false;
+    //$scope.id = {
+    //    username: "djdapz",
+    //    playlistName: "test1",
+    //    id: "djdapz_test1"
+    //}
 
 
+    //functions for view managment
+    $scope.goToPlaylistName = function(username){
+        $scope.id.username = username;
+        $scope.usernameEntered = true;
+    };
+
+    $scope.initialize = function(playlistName){
+        $scope.id.playlistName = playlistName;
+
+        $scope.id.id = $scope.id.username + '_' + $scope.id.playlistName;
+        $scope.id.id.replace(/\s+/g, '-');
+        $scope.initialized = true;
+    };
+
+    $scope.lookIn = function(){
+        var x =  1+1;
+    };
+
+    $scope.processSongs = function(){
+        $scope.processing = true;
+        $http({
+            method: 'GET',
+            url: '/mixedsong',
+            headers:{
+                'playlist_id': $scope.id.id
+            }
+        }).then(
+            function onSuccess(response){
+                $scope.weDidIt = true;
+            },  function onError(response){
+                $scope.weDidIt = false;
+            });
+    };
+
+    $scope.addMoreSongs =function(){
+        $scope.addingMoreSongs =  true;
+    }
+
+
+    //variables for uploading
     $scope.log = '';
     $scope.percentagesBySong = [];
     $scope.percentageComplete = 0;
@@ -26,6 +86,7 @@ var WebAppController = function($scope, Upload, $timeout){
 
 
     $scope.upload = function (files) {
+        $scope.percentagesBySong = [];
         if (files && files.length) {
             for (var i = 0; i < files.length; i++) {
                 var thisSong = {
@@ -33,10 +94,17 @@ var WebAppController = function($scope, Upload, $timeout){
                     percentage: 0
                 };
                 $scope.percentagesBySong[files[i].name] = thisSong;
+                if($scope.addingMoreSongs){
+                    $scope.songsToDisplay.unshift(thisSong);
+                }else{
+                    $scope.songsToDisplay.push(thisSong);
+                }
 
-
-                $scope.songsToDisplay.push(thisSong);
             }
+
+            $scope.addingMoreSongs = false;
+            $scope.percentageComplete = 0;
+
             $scope.uploadBegan = true;
 
             for (var i = 0; i < files.length; i++) {
@@ -49,7 +117,7 @@ var WebAppController = function($scope, Upload, $timeout){
                             file: file
                         },
                         params:{
-                            name: file.name
+                            name:  $scope.id.id
                         }
                     }).then(function (resp) {
                         $timeout(function() {
@@ -77,19 +145,30 @@ var WebAppController = function($scope, Upload, $timeout){
         }
     };
 
-    $scope.lookIn = function(){
-        var x =  1+1;
-    }
-
-    $scope.processSongs = function(){
-        $scope.processing = true;
-    }
 
 };
 
 /* recommended */
 angular
     .module('app.webApp')
-    .controller("WebAppController", WebAppController);
+    .controller("WebAppController", WebAppController)
+    .directive('focus',
+    function($timeout) {
+        return {
+            scope: {
+                trigger: '@focus'
+            },
+            link: function (scope, element) {
+                scope.$watch('trigger', function (value) {
+                    if (value === "true") {
+                        $timeout(function () {
+                            element[0].focus();
+                        })
+                    }
+                });
+            }
+        }
+    });
+;
 
-WebAppController.$inject = ['$scope', 'Upload', '$timeout'];
+WebAppController.$inject = ['$scope', 'Upload', '$timeout', '$http'];

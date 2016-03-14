@@ -15,6 +15,10 @@
                     templateUrl: 'partials/webApp.html',
                     controller: "WebAppController"
                 }).
+                when('/play',{
+                    templateUrl: 'partials/songPlayer.html',
+                    controller: "SongPlayerController"
+                }).
                 otherwise({
                     redirectTo: '/home'
                 });

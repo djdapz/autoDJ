@@ -1,0 +1,38 @@
+codeDump
+    <div ng-if ="!initialized">
+
+        <input ng-if="!usernameEntered"
+               class="form-control"
+               id="custom_input"
+               type="text" focus="true"
+               ng-model="username"
+               placeholder="Enter username"
+               ng-keyup="$event.keyCode == 13 && goToPlaylistName()" />
+
+        <input ng-if="usernameEntered"
+               class="form-control" id="custom_input"
+               type="text"
+               focus="true"
+               ng-model="playlistName"
+               placeholder="Enter Playlist Name"
+               ng-keyup="$event.keyCode == 13 && initialize()" />
+    </div>
+
+    
+    .directive('focus',
+    function($timeout) {
+        return {
+            scope: {
+                trigger: '@focus'
+            },
+            link: function (scope, element) {
+                scope.$watch('trigger', function (value) {
+                    if (value === "true") {
+                        $timeout(function () {
+                            element[0].focus();
+                        })
+                    }
+                });
+            }
+        }
+    });

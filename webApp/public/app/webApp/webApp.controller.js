@@ -2,40 +2,25 @@
  * Created by djdapz on 3/10/16.
  */
 
-var WebAppController = function($scope, Upload, $timeout, $http){
+var WebAppController = function(Upload, $timeout, $http, UserService){
 
     //setup variables
     $scope.initialized = undefined;
-    $scope.usernameEntered = false;
-    $scope.id = {
-        username: undefined,
-        playlistName: undefined,
-        id: undefined
-    }
+    $scope.username = UserService.user.username;
+    $scope.playlist = undefined;
     $scope.addingMoreSongs =  false;
     $scope.weDidIt = undefined;
 
-    //for testing
-    //$scope.initialized = true;
-    //$scope.usernameEntered = false;
-    //$scope.id = {
-    //    username: "djdapz",
-    //    playlistName: "test1",
-    //    id: "djdapz_test1"
-    //}
 
 
     //functions for view managment
-    $scope.goToPlaylistName = function(username){
-        $scope.id.username = username;
-        $scope.usernameEntered = true;
+    $scope.enterUsername = function(username){
+        UserService.user.username = username;
+        $scope.username = username;
     };
 
     $scope.initialize = function(playlistName){
-        $scope.id.playlistName = playlistName;
-
-        $scope.id.id = $scope.id.username + '_' + $scope.id.playlistName;
-        $scope.id.id.replace(/\s+/g, '-');
+        $scope.playlist = UserService.initializePlaylist(playlistName);
         $scope.initialized = true;
     };
 
@@ -49,7 +34,7 @@ var WebAppController = function($scope, Upload, $timeout, $http){
             method: 'GET',
             url: '/mixedsong',
             headers:{
-                'playlist_id': $scope.id.id
+                'playlist_id': $scope.playlist.id
             }
         }).then(
             function onSuccess(response){
@@ -65,7 +50,7 @@ var WebAppController = function($scope, Upload, $timeout, $http){
 
 
     //variables for uploading
-    $scope.log = '';
+
     $scope.percentagesBySong = [];
     $scope.percentageComplete = 0;
     $scope.totalPercentages = 0;
@@ -117,7 +102,7 @@ var WebAppController = function($scope, Upload, $timeout, $http){
                             file: file
                         },
                         params:{
-                            name:  $scope.id.id
+                            name:  $scope.playlist.id
                         }
                     }).then(function (resp) {
                         $timeout(function() {
@@ -171,4 +156,4 @@ angular
     });
 ;
 
-WebAppController.$inject = ['$scope', 'Upload', '$timeout', '$http'];
+WebAppController.$inject = ['$scope', 'Upload', '$timeout', '$http', 'UserService'];

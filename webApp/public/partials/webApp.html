@@ -1,23 +1,30 @@
 <div>
 
-
+    <!--<div class="col-xs-2">-->
+        <!--<button class="btn-custom-proceed btn pull-right btn-in-cell" ng-click="lookIn()">-->
+            <!--Look IN-->
+        <!--</button>-->
+    <!--</div>-->
     <div ng-if ="!initialized">
-        <input ng-if="!usernameEntered"
-               class="form-control"
-               id="custom_input"
+
+
+
+        <input ng-if="!username"
+               class="form-control custom_input"
                type="text" focus="true"
                ng-model="username"
                placeholder="Enter username"
-               ng-keyup="$event.keyCode == 13 && goToPlaylistName(username)" />
+               ng-keyup="$event.keyCode == 13 && enterUsername(username)" />
 
-        <input ng-if="usernameEntered"
-               class="form-control"
-               id="custom_input"
+        <input ng-if="username"
+               class="form-control custom_input"
                type="text"
                focus="true"
                ng-model="playlistName"
                placeholder="Enter Playlist Name"
                ng-keyup="$event.keyCode == 13 && initialize(playlistName)" />
+
+        <!--TODO - Add capabilities to access old playlists here or create a new one-->
     </div>
 
 
@@ -106,11 +113,6 @@
                 </button>
             </div>
 
-            <!--<div class="col-xs-2">-->
-                <!--<button class="btn-custom-proceed btn pull-right btn-in-cell" ng-click="lookIn()">-->
-                    <!--Look IN-->
-                <!--</button>-->
-            <!--</div>-->
 
 
 

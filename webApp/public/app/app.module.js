@@ -6,9 +6,11 @@
     angular.module("app.webApp", []);
     angular.module("app.song", []);
 
-    angular.module("app", ["ngRoute",
+    angular.module("app", ["ngResource",
+        "ngRoute",
         "ngFileUpload",
         "ui.bootstrap",
+        "app.services",
         "app.home",
         "app.webApp",
         "app.song"]);

@@ -135,7 +135,7 @@ body{
     margin-right: auto
 }
 
-#custom_input{
+.custom_input{
     width: 73%;
     margin: auto;
     margin-top: 20%;

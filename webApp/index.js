@@ -1,10 +1,9 @@
 var express = require('express');
 var fs = require('fs');
 var http= require('http');
-// Requires multiparty
 var multiparty = require('connect-multiparty'),
     multipartyMiddleware = multiparty();
-UserController = require('./controllers/UserController');
+var python = reqire('python-shell');
 var app = express();
 
 //serve frontend

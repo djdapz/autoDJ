@@ -5,6 +5,10 @@
             <!--Look IN-->
         <!--</button>-->
     <!--</div>-->
+
+    <div ng-hide = 'true' id="playlist_id">
+        {{playlist.id}}
+    </div >
     <div ng-if ="!initialized">
 
 
@@ -112,30 +116,78 @@
                     Next
                 </button>
             </div>
-
-
-
-
-
-
-
-
-
-
         </div>
+
+
 
         <div ng-if="processing">
-            <h1 class="app-header">
+            <h1 class="app-header" ng-hide="showWaveform">
                 Your songs are being Mixed...
             </h1>
-            <img src="/resources/preloader.gif" class="center_image">
+            <img src="/resources/preloader.gif" class="center_image" ng-hide="showWaveform">
 
-            <div>
-                <a class="btn-custom-proceed btn pull-right btn-in-cell" ng-if="weDidIt" href="#/play">
+            <div ng-hide="showWaveform">
+                <button class="btn-custom-proceed btn pull-right btn-in-cell" ng-if="weDidIt" onclick="initialize()" ng-click="readytoseewaves()">
                     Next
-                </a>
+                </button>
             </div>
+
+            <div ng-show="showWaveform">
+                <div id="waveDiv">
+                    <div id="waveform" ></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-5">
+                        <button id = "play-button" class="btn-custom-primary btn pull-right btn-in-cell" onclick="surf.playPause()">
+                            <i class="glyphicon glyphicon-play"></i>
+                            Play
+                        </button>
+                    </div>
+                </div>
+
+
+
+
+
+                <script>
+                    /**
+                     * Created by djdapz on 3/14/16.
+                     */
+                    var surf = undefined;
+
+                    var initialize = function(){
+                        var song_id = document.getElementById("playlist_id");
+                        song_id = song_id.innerText;
+                        song_id = song_id.trim();
+
+                        var wavesurfer = WaveSurfer.create({
+                            container: '#waveform',
+                            waveColor: 'blue',
+                            progressColor: 'purple'
+                        });
+
+                        console.log(song_id);
+                        var path = './songs/' + song_id + '.mp3'
+                        wavesurfer.load(path);
+
+                        surf = wavesurfer;
+                        return true;
+
+
+                    };
+
+                </script>
+
+            </div>
+
+
         </div>
+
+
+
+
+
 
 
     </div>

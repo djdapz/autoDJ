@@ -1,5 +1,0 @@
-Numpy==1.10.2
-SciPy==0.16.1
-Matplotlib==1.5.0
-Scikit-Learn ==0.17
-Librosa==0.4.1

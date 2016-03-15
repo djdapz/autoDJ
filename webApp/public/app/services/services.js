@@ -12,6 +12,8 @@ appServices.factory('UserService', [function() {
         username: undefined
     };
 
+    var ready = false;
+
     var playlists= [];
 
     var currentPlaylist = {
@@ -21,34 +23,20 @@ appServices.factory('UserService', [function() {
     };
 
 
-
     return {
-        startMonitoring: function () {
-            $rootScope.$on('$routeChangeSuccess', function () {
-                batchLog($route.current ? $route.current.template : null);
-            });
-
-        },
-
         user: user,
-
+        ready: ready,
         playlist: currentPlaylist,
 
         initializePlaylist: function(playlistName){
             currentPlaylist.name = playlistName;
             currentPlaylist.id = user.username + '_' +playlistName;
-            currentPlaylist.id.replace(/\s+/g, '-');
 
+            currentPlaylist.id = currentPlaylist.id.replace(/\s/g, '');
             //add to or update array
             playlists[currentPlaylist.id] = currentPlaylist;
-
-
-
             return currentPlaylist;
         }
-
-
-
 
 
     }

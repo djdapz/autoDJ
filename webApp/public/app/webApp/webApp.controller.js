@@ -2,7 +2,7 @@
  * Created by djdapz on 3/10/16.
  */
 
-var WebAppController = function(Upload, $timeout, $http, UserService){
+var WebAppController = function($scope, Upload, $timeout, $http, UserService){
 
     //setup variables
     $scope.initialized = undefined;
@@ -10,6 +10,7 @@ var WebAppController = function(Upload, $timeout, $http, UserService){
     $scope.playlist = undefined;
     $scope.addingMoreSongs =  false;
     $scope.weDidIt = undefined;
+    $scope.showWaveForm = false;
 
 
 
@@ -38,6 +39,7 @@ var WebAppController = function(Upload, $timeout, $http, UserService){
             }
         }).then(
             function onSuccess(response){
+                UserService.ready=true;
                 $scope.weDidIt = true;
             },  function onError(response){
                 $scope.weDidIt = false;
@@ -46,6 +48,10 @@ var WebAppController = function(Upload, $timeout, $http, UserService){
 
     $scope.addMoreSongs =function(){
         $scope.addingMoreSongs =  true;
+    };
+
+    $scope.readytoseewaves = function(){
+        $scope.showWaveform = true;
     }
 
 

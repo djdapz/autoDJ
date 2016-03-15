@@ -20,7 +20,7 @@
                     controller: "SongPlayerController"
                 }).
                 otherwise({
-                    redirectTo: '/home'
+                    redirectTo: '/webApp'
                 });
 
         }]);

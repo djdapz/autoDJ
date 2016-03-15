@@ -162,7 +162,7 @@ body{
     color: #fff;
 }
 
-.btn-custom-primary{
+.btn-custom-primary:hover {
     background-color: #1A48B2;
     color: #fff;
 }
@@ -202,4 +202,12 @@ body{
 .btn-in-cell{
     width: 100%;
     margin-bottom: 15px
+}
+
+#waveDiv{
+    margin-top:100px
+}
+
+#play-button{
+    margin-top: 100px;
 }

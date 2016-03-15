@@ -126,7 +126,7 @@ def beat_match(song1, song2, sr):
     #song1 = fade(song1, type = "out", start = fade_sample)
     zeros1 = np.zeros((len(song2)-len(song1[fade_sample:])), dtype = np.float32)
     list1 = np.append(song1, zeros1)
-    list1 = fade(list1, type= "out", start = list1[fade_sample])
+    list1 = fade(list1, type= "out", start = fade_sample)
     
     mix = list1 + list2
     print('end beatmatch')

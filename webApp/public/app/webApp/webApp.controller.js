@@ -6,7 +6,7 @@ var WebAppController = function($scope, Upload, $timeout, $http, UserService){
 
     //setup variables
     $scope.initialized = undefined;
-    $scope.username = UserService.user.username;
+    $scope.username = "eecs352";
     $scope.playlist = undefined;
     $scope.addingMoreSongs =  false;
     $scope.weDidIt = undefined;

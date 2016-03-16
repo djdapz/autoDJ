@@ -30,7 +30,9 @@ appServices.factory('UserService', [function() {
 
         initializePlaylist: function(playlistName){
             currentPlaylist.name = playlistName;
-            currentPlaylist.id = user.username + '_' +playlistName;
+            var x = new Date();
+            var time = x.getTime();
+            currentPlaylist.id = user.username + '_' +playlistName + time;
 
             currentPlaylist.id = currentPlaylist.id.replace(/\s/g, '');
             //add to or update array

@@ -1,9 +1,10 @@
+from __future__ import division
 from os import listdir
 from librosa.core import load
 from librosa.beat import beat_track
 from scipy.fftpack import fft
 from scipy.signal import hann
-#from __future__ import division
+
 
 import numpy as np
 import scipy as sp
@@ -42,7 +43,7 @@ def fade(X, type, start=None, end=None):
     
     sig_length = len(X)
     
-    Y = list(X)
+    Y = np.array(X, dtype='f')
     
     if (start==None):
         start = 0
@@ -51,22 +52,36 @@ def fade(X, type, start=None, end=None):
     
     if (end==None):
         end = sig_length - 1 
+
     if (end >= sig_length):
         end = sig_length - 1
+
+    if (start > end):
+    	temp = end
+    	end = start
+    	start = temp
         
     fade_length = 1 + end - start
-    
+
     fade = np.arange(0,fade_length)
 
     if (type == "in"):
     	print("filtering in")
-        #fade_in = np.sqrt(fade/(fade_length-1))
-        fade_in = fade/(fade_length-1)
+    	print('start')
+        print(start)
+        print('end')
+        print(end)
+
+        fade_in = np.sqrt(fade/(fade_length-1))
+
+        #fade_in = fade/(fade_length-1)
         Y[int(start):int((end+1))] = X[int(start):int((end+1))]*fade_in
         
     if (type == "out"):
     	print("filtering out")
-        #fade_out = np.sqrt(1 - fade/(fade_length-1))
+        fade_out = np.sqrt(1 - fade/(fade_length-1))
+        print("len fade out")
+        print(len(fade_out))
         fade_out = 1 - fade/(fade_length-1)
         Y[int(start):int((end+1))] = X[int(start):int((end+1))]*fade_out
     
@@ -113,20 +128,25 @@ def beat_match(song1, song2, sr):
     
     phrases1 = len(beat1)
     fade_start = phrases1 - 32
+
     fade_sample = beat1[fade_start]
+    fade_out_start = fade_sample
+    fade_out_end = len(song2)
     
+
     phrases2 = len(beat2)
-    fade_end= beat2[32]
+    fade_in_start = len(song1[:fade_sample])
+    fade_in_end = fade_in_start + phrases2
     
-    #song2 = fade(song2, type = "in", end = fade_end)
+    song2 = fade(song2, type = "in", end = beat2[32])
     zeros2 = np.zeros(len(song1[:fade_sample]), dtype = np.float32)
     list2 = np.append(zeros2, song2)
-    list2 = fade(list2, type= "in", start = fade_sample, end = fade_end)
+    #list2 = fade(list2, type= "in", start = fade_in_start, end = fade_in_end)
     
-    #song1 = fade(song1, type = "out", start = fade_sample)
+    song1 = fade(song1, type = "out", start = fade_out_start)
     zeros1 = np.zeros((len(song2)-len(song1[fade_sample:])), dtype = np.float32)
     list1 = np.append(song1, zeros1)
-    list1 = fade(list1, type= "out", start = fade_sample)
+    #list1 = fade(list1, type= "out", start = fade_out_start, end = fade_out_end)
     
     mix = list1 + list2
     print('end beatmatch')
@@ -171,10 +191,10 @@ def mix_maker(playlist, rootDir):
     	print("iteration: ")
     	x = x+1
     	print(x)
+    	print('playlist_length')
     	print(len(playlist))
         samples, sr = load(rootDir+"/" +playlist[0],44100)
         mix = beat_match(mix, samples, sr)
-        
         playlist = playlist[1:]
         playlist_length = len(playlist)
         

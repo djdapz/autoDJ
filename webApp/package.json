@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "node and python backend for autoDJ",
   "main": "index.js",
+  "repository": "https://github.com/djdapz/autoDJ.git",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
